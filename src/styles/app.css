@@ -18,34 +18,10 @@ body {
   min-height: 100%;
 }
 
-/* src/components/ProductCard.css */
-
-.product-card {
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  padding: 16px;
-  max-width: 300px;
-  text-align: center;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.product-image {
-  width: 100%;
-  height: auto;
-  border-radius: 8px;
-}
-
-.product-name {
-  font-size: 1.2rem;
-  font-weight: bold;
-  margin: 8px 0;
-}
-
-.product-category,
-.product-brand,
-.product-price,
-.product-rating {
-  margin: 4px 0;
-  font-size: 0.9rem;
-  color: #555;
+.fallback {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  align-items: center;
+  font-size: var(--font-size-secondary);
 }
