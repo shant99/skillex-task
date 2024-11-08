@@ -5,12 +5,17 @@ import { PAGINATION_DEFAULT } from "../../config/constants";
 import ProductCard from "../../components/shared/ProductCard";
 import "./styles.css";
 import { BeatLoader } from "react-spinners";
+import { Pagination } from "../../components/shared";
 
 const Products = () => {
   const dispatch = useDispatch();
-  const { products, status, isLoading } = useSelector(
+  const { products, status, isLoading, total } = useSelector(
     (state) => state.products
   );
+
+  const onPageChange = (page, limit) => {
+    dispatch(fetchProducts({ page: page - 1, limit, filters: {} }));
+  };
 
   useEffect(() => {
     dispatch(fetchProducts({ ...PAGINATION_DEFAULT, filters: {} }));
@@ -29,10 +34,14 @@ const Products = () => {
       ) : (
         <div className="product-list">
           {products.map((product) => (
-            <ProductCard key={product.id} product={product} />
+            <ProductCard
+              key={`${product.id}_${product.brand}`}
+              product={product}
+            />
           ))}
         </div>
       )}
+      <Pagination totalItems={total} onPageChange={onPageChange} />
     </div>
   );
 };

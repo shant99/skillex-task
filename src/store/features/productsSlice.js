@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import { getPaginatedProducts, getTotalPage } from "../../utils/pagination";
+import { getPaginatedProducts } from "../../utils/pagination";
 
 const initialState = {
   products: [],
@@ -8,7 +8,7 @@ const initialState = {
   error: null,
   page: 1,
   limit: 10,
-  totalPages: 0,
+  total: 0,
   filters: {},
 };
 
@@ -30,9 +30,11 @@ export const fetchProducts = createAsyncThunk(
       //     );
       //   }
 
+      console.log(page, limit, "====");
+
       return {
         products: getPaginatedProducts(filteredProducts, page, limit),
-        totalPages: getTotalPage(filteredProducts.length, limit),
+        total: data.length,
       };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -64,7 +66,7 @@ const productsSlice = createSlice({
         state.status = "succeeded";
         state.isLoading = false;
         state.products = action.payload.products;
-        state.totalPages = action.payload.totalPages;
+        state.total = action.payload.total;
       })
       .addCase(fetchProducts.rejected, (state, action) => {
         state.status = "failed";

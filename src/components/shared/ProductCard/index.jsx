@@ -12,11 +12,18 @@ const ProductCard = ({ product }) => {
         />
         <div className="product-info">
           <h2 className="product-name">{product.name}</h2>
-          <p className="product-category">Category: {product.category}</p>
-          <p className="product-brand">Brand: {product.brand}</p>
+          <p className="product-category">
+            <span>Category:</span> {product.category}
+          </p>
+          <p className="product-brand">
+            <span>Brand:</span> {product.brand}
+          </p>
           <div className="rating-price-wrapper">
             <p className="product-price">${product.price.toFixed(2)}</p>
-            <p className="product-rating">Rating: {product.rating} ★</p>
+            <p className="product-rating">
+              <span>Rating:</span> <span>{product.rating}</span>
+              <span>★</span>{" "}
+            </p>
           </div>
         </div>
       </>

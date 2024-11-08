@@ -88,5 +88,140 @@
         "price": 199.99,
         "rating": 4.7,
         "imageUrl": "/images/jacket.jpg"
+    },
+    {
+        "id": 11,
+        "name": "Wireless Headphones",
+        "category": "Electronics",
+        "brand": "Brand A",
+        "price": 99.99,
+        "rating": 4.5,
+        "imageUrl": "/images/headphones.webp"
+    },
+    {
+        "id": 12,
+        "name": "Bluetooth Speaker",
+        "category": "Electronics",
+        "brand": "Brand B",
+        "price": 49.99,
+        "rating": 4.0,
+        "imageUrl": "/images/speakers.webp"
+    },
+    {
+        "id": 13,
+        "name": "Running Shoes",
+        "category": "Footwear",
+        "brand": "Brand C",
+        "price": 59.99,
+        "rating": 4.2,
+        "imageUrl": "/images/shoes.jpg"
+    },
+    {
+        "id": 14,
+        "name": "Smartphone",
+        "category": "Electronics",
+        "brand": "Brand D",
+        "price": 499.99,
+        "rating": 4.8,
+        "imageUrl": "/images/smartphones.jpg"
+    },
+    {
+        "id": 15,
+        "name": "Leather Jacket",
+        "category": "Clothing",
+        "brand": "Brand E",
+        "price": 199.99,
+        "rating": 4.7,
+        "imageUrl": "/images/jacket.jpg"
+    },
+    {
+        "id": 16,
+        "name": "Wireless Headphones",
+        "category": "Electronics",
+        "brand": "Brand A",
+        "price": 99.99,
+        "rating": 4.5,
+        "imageUrl": "/images/headphones.webp"
+    },
+    {
+        "id": 17,
+        "name": "Bluetooth Speaker",
+        "category": "Electronics",
+        "brand": "Brand B",
+        "price": 49.99,
+        "rating": 4.0,
+        "imageUrl": "/images/speakers.webp"
+    },
+    {
+        "id": 18,
+        "name": "Running Shoes",
+        "category": "Footwear",
+        "brand": "Brand C",
+        "price": 59.99,
+        "rating": 4.2,
+        "imageUrl": "/images/shoes.jpg"
+    },
+    {
+        "id": 19,
+        "name": "Smartphone",
+        "category": "Electronics",
+        "brand": "Brand D",
+        "price": 499.99,
+        "rating": 4.8,
+        "imageUrl": "/images/smartphones.jpg"
+    },
+    {
+        "id": 20,
+        "name": "Leather Jacket",
+        "category": "Clothing",
+        "brand": "Brand E",
+        "price": 199.99,
+        "rating": 4.7,
+        "imageUrl": "/images/jacket.jpg"
+    },
+    {
+        "id": 21,
+        "name": "Wireless Headphones",
+        "category": "Electronics",
+        "brand": "Brand A",
+        "price": 99.99,
+        "rating": 4.5,
+        "imageUrl": "/images/headphones.webp"
+    },
+    {
+        "id": 22,
+        "name": "Bluetooth Speaker",
+        "category": "Electronics",
+        "brand": "Brand B",
+        "price": 49.99,
+        "rating": 4.0,
+        "imageUrl": "/images/speakers.webp"
+    },
+    {
+        "id": 23,
+        "name": "Running Shoes",
+        "category": "Footwear",
+        "brand": "Brand C",
+        "price": 59.99,
+        "rating": 4.2,
+        "imageUrl": "/images/shoes.jpg"
+    },
+    {
+        "id": 24,
+        "name": "Smartphone",
+        "category": "Electronics",
+        "brand": "Brand D",
+        "price": 499.99,
+        "rating": 4.8,
+        "imageUrl": "/images/smartphones.jpg"
+    },
+    {
+        "id": 25,
+        "name": "Leather Jacket",
+        "category": "Clothing",
+        "brand": "Brand E",
+        "price": 199.99,
+        "rating": 4.7,
+        "imageUrl": "/images/jacket.jpg"
     }
 ]
