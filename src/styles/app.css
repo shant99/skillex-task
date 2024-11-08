@@ -1,0 +1,51 @@
+@import "./reset.css";
+@import "./fonts.css";
+@import "./variables.css";
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-text-size-adjust: 100%;
+}
+
+html,
+body {
+  font-family: "Eudoxus Sans", -apple-system, BlinkMacSystemFont, Segoe UI,
+    Roboto, Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
+    sans-serif;
+  letter-spacing: 0.1px;
+  font-weight: 400;
+  min-height: 100%;
+}
+
+/* src/components/ProductCard.css */
+
+.product-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 16px;
+  max-width: 300px;
+  text-align: center;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.product-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+.product-name {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin: 8px 0;
+}
+
+.product-category,
+.product-brand,
+.product-price,
+.product-rating {
+  margin: 4px 0;
+  font-size: 0.9rem;
+  color: #555;
+}

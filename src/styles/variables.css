@@ -1,0 +1,12 @@
+:root {
+  --font-size-base: 14px;
+  --spacing-unit: 8px;
+
+  /* Colors */
+  --color-text: #191919;
+  --color-text-secondary: #585858;
+  --primary-color: #e85a5c;
+  --secondary-color: #585858;
+  --color-split: #f0f0f0;
+  --white: rgb(252, 249, 249);
+}
