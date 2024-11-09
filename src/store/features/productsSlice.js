@@ -1,40 +1,42 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { getPaginatedProducts } from "../../utils/pagination";
+import searchByString from "../../utils/searchByString";
+import { savedFilters, savedPagination } from "../../utils/localStorage";
 
 const initialState = {
   products: [],
   status: "idle",
   isLoading: false,
   error: null,
-  page: 1,
-  limit: 10,
+  page: savedPagination.page,
+  limit: savedPagination.limit,
   total: 0,
-  filters: {},
+  filters: {
+    search: savedFilters.search || "",
+  },
 };
 
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
-  async ({ page, limit, filters }, thunkAPI) => {
+  async ({ page, limit }, thunkAPI) => {
     try {
       const response = await fetch("/data/products.json");
       if (!response.ok) {
         throw new Error("Failed to fetch products");
       }
+      const state = thunkAPI.getState();
+      const filters = state.products.filters;
+
       const data = await response.json();
       let filteredProducts = data;
 
-      // Filter by category
-      //   if (filters.category) {
-      //     filteredProducts = filteredProducts.filter(
-      //       (product) => product.category === filters.category
-      //     );
-      //   }
-
-      console.log(page, limit, "====");
+      if (filters.search) {
+        filteredProducts = searchByString(filteredProducts, filters.search);
+      }
 
       return {
         products: getPaginatedProducts(filteredProducts, page, limit),
-        total: data.length,
+        total: filteredProducts.length,
       };
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -46,11 +48,9 @@ const productsSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
-    setPage: (state, action) => {
-      state.page = action.payload;
-    },
-    setLimit: (state, action) => {
-      state.limit = action.payload;
+    setPagination: (state, action) => {
+      state.limit = action.payload.limit;
+      state.page = action.payload.page;
     },
     setFilters: (state, action) => {
       state.filters = { ...state.filters, ...action.payload };
@@ -75,5 +75,5 @@ const productsSlice = createSlice({
   },
 });
 
-export const { setPage, setLimit, setFilters } = productsSlice.actions;
+export const { setPagination, setFilters } = productsSlice.actions;
 export default productsSlice.reducer;

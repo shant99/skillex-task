@@ -1,49 +1,51 @@
-import { useEffect } from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useDispatch, useSelector } from "react-redux";
-import { fetchProducts } from "../../store/features/productsSlice";
-import { PAGINATION_DEFAULT } from "../../config/constants";
-import ProductCard from "../../components/shared/ProductCard";
-import "./styles.css";
-import { BeatLoader } from "react-spinners";
-import { Pagination } from "../../components/shared";
+import {
+  fetchProducts,
+  setPagination,
+} from "../../store/features/productsSlice";
+import Pagination from "../../components/shared/Pagination";
+import { Loading, Search } from "../../components/shared";
+import React, { useEffect } from "react";
+import { useTranslation } from "react-i18next";
+import ProductsSection from "../../components/shared/ProductsSection";
 
 const Products = () => {
+  const { t } = useTranslation();
   const dispatch = useDispatch();
-  const { products, status, isLoading, total } = useSelector(
+  const { page, limit, filters, isLoading, products, total } = useSelector(
     (state) => state.products
   );
 
-  const onPageChange = (page, limit) => {
-    dispatch(fetchProducts({ page: page - 1, limit, filters: {} }));
+  const handlePageChange = (pageNum, limitNum) => {
+    dispatch(fetchProducts({ page: pageNum - 1, limit: limitNum, filters }));
+    dispatch(setPagination({ page: pageNum - 1, limit: limitNum }));
+    localStorage.setItem(
+      "pagination",
+      JSON.stringify({ page: pageNum - 1, limit: limitNum })
+    );
   };
 
   useEffect(() => {
-    dispatch(fetchProducts({ ...PAGINATION_DEFAULT, filters: {} }));
-  }, [dispatch]);
-
-  if (status === "failed") {
-    return <div>Modal</div>;
-  }
+    dispatch(fetchProducts({ page: 0, limit }));
+  }, []);
 
   return (
-    <div>
+    <>
+      <Search defaultSearch={filters.search} />
       {isLoading ? (
-        <div className="loading">
-          Products Loading <BeatLoader />
-        </div>
+        <Loading text={t("loading_products")} />
       ) : (
-        <div className="product-list">
-          {products.map((product) => (
-            <ProductCard
-              key={`${product.id}_${product.brand}`}
-              product={product}
-            />
-          ))}
-        </div>
+        <ProductsSection products={products} />
       )}
-      <Pagination totalItems={total} onPageChange={onPageChange} />
-    </div>
+      <Pagination
+        totalItems={total}
+        onPageChange={handlePageChange}
+        defaultPage={page + 1}
+        defaultLimit={limit}
+      />
+    </>
   );
 };
 
-export default Products;
+export default React.memo(Products);

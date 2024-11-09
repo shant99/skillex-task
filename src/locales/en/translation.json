@@ -3,5 +3,8 @@
         "home": "Home",
         "products": "Products"
     },
-    "footer": "Footer"
+    "footer": "Footer",
+    "loading_products": "Loading Products",
+    "error_get_products": "Error loading products",
+    "search": "Search"
 }

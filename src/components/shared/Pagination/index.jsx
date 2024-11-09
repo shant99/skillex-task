@@ -1,12 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./styles.css";
 import generatePageNumbers from "../../../utils/generatePageNumbers";
 
 const Pagination = ({
   totalItems,
   onPageChange,
-  defaultPage = 1,
-  defaultLimit = 10,
+  defaultPage,
+  defaultLimit,
 }) => {
   const [currentPage, setCurrentPage] = useState(defaultPage);
   const [itemsPerPage, setItemsPerPage] = useState(defaultLimit);
