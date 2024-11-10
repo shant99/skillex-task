@@ -29,3 +29,9 @@
 .search-input::placeholder {
   color: #aaa;
 }
+
+@media screen and (max-width: 600px) {
+  .search-input-container {
+    width: 320px;
+  }
+}

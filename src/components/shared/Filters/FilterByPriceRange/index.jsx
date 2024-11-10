@@ -23,7 +23,7 @@ const FilterByPriceRange = ({ onPriceRangeChange }) => {
   ]);
 
   const debouncedRange = useDebounce(range, 1500);
-  console.log("----");
+
   useEffect(() => {
     dispatch(fetchProducts({ page: 0, limit: 10 }));
     dispatch(setPagination({ page: 0, limit: 10 }));

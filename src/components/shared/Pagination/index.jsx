@@ -1,17 +1,33 @@
-import { useEffect, useState } from "react";
+import { useMemo, useState } from "react";
 import "./styles.css";
 import generatePageNumbers from "../../../utils/generatePageNumbers";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  fetchProducts,
+  setPagination,
+} from "../../../store/features/productsSlice";
 
-const Pagination = ({
-  totalItems,
-  onPageChange,
-  defaultPage,
-  defaultLimit,
-}) => {
-  const [currentPage, setCurrentPage] = useState(defaultPage);
-  const [itemsPerPage, setItemsPerPage] = useState(defaultLimit);
+const Pagination = () => {
+  const dispatch = useDispatch();
+  const {
+    page,
+    limit,
+    filters,
+    total: totalItems,
+  } = useSelector((state) => state.products);
+  const [currentPage, setCurrentPage] = useState(page + 1);
+  const [itemsPerPage, setItemsPerPage] = useState(limit);
 
-  const totalPages = Math.ceil(totalItems / itemsPerPage);
+  const totalPages = useMemo(
+    () => Math.ceil(totalItems / itemsPerPage),
+    [itemsPerPage, totalItems]
+  );
+
+  const onPageChange = (pageNum, limitNum) => {
+    const pagination = { page: pageNum - 1, limit: limitNum };
+    dispatch(fetchProducts({ ...pagination, filters }));
+    dispatch(setPagination(pagination));
+  };
 
   const handlePageChange = (page) => {
     if (page >= 1 && page <= totalPages) {

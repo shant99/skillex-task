@@ -1,6 +1,7 @@
 .layout {
   display: flex;
   justify-content: center;
+  position: relative;
 }
 .wrapper {
   display: flex;
@@ -62,4 +63,13 @@ footer {
   color: var(--text-color);
   text-align: center;
   box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.08);
+}
+
+@media screen and (max-width: 800px) {
+  header {
+    padding: 6px 20px;
+  }
+  .main {
+    padding: 30px 0;
+  }
 }

@@ -18,5 +18,6 @@
     "filter_by_rating": "Filter by Rating",
     "filter_by_brand": "Filter by Brand",
     "filter_by_category": "Filter by Category",
-    "filter_by_price": "Filter by Price"
+    "filter_by_price": "Filter by Price",
+    "reset_filters": "Reset filters"
 }

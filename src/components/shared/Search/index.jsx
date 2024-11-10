@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { SearchIcon } from "../../icons";
 import "./styles.css";
 import useDebounce from "../../../hooks/useDebounce";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import {
   fetchProducts,
   setFilters,
@@ -12,6 +12,7 @@ import {
 
 const Search = ({ placeholder = "Search", defaultSearch }) => {
   const dispatch = useDispatch();
+  const { filters } = useSelector((state) => state.products);
   const [searchQuery, setSearchQuery] = useState(defaultSearch);
   const debouncedSearchQuery = useDebounce(searchQuery, 700);
 
@@ -20,6 +21,12 @@ const Search = ({ placeholder = "Search", defaultSearch }) => {
     dispatch(setPagination({ page: 0, limit: 10 }));
     dispatch(setFilters({ search: debouncedSearchQuery }));
   }, [debouncedSearchQuery]);
+
+  useEffect(() => {
+    if (!filters.search) {
+      setSearchQuery("");
+    }
+  }, [filters.search]);
 
   return (
     <div className="search-wrapper">

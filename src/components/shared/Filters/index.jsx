@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import SortDropdown from "./SortDropdown";
 import "./styles.css";
 import {
@@ -9,39 +9,28 @@ import {
   sortProducts,
 } from "../../../store/features/productsSlice";
 import FilterByRating from "./FilterByRating";
-import { ResetIcon } from "../../icons";
+import { CloseIcon, FiltersIcon, ResetIcon } from "../../icons";
 import FilterByBrand from "./FilterByBrand";
 import FilterByCategory from "./FilterByCategory";
-import Slider from "rc-slider";
 import "rc-slider/assets/index.css";
 import FilterByPriceRange from "./FilterByPriceRange";
+import { useTranslation } from "react-i18next";
+import { useState } from "react";
 
 const Filters = ({ filters }) => {
   const dispatch = useDispatch();
+  const { t } = useTranslation();
 
-  const handleBrandChange = (brand) => {
+  const updateFilter = (newFilter) => {
     dispatch(fetchProducts({ page: 0, limit: 10 }));
     dispatch(setPagination({ page: 0, limit: 10 }));
-    dispatch(setFilters({ ...filters, brand }));
+    dispatch(setFilters({ ...filters, ...newFilter }));
   };
 
-  const handleRatingChange = (rating) => {
-    dispatch(fetchProducts({ page: 0, limit: 10 }));
-    dispatch(setPagination({ page: 0, limit: 10 }));
-    dispatch(setFilters({ ...filters, rating }));
-  };
-
-  const handleCategoryChange = (category) => {
-    dispatch(fetchProducts({ page: 0, limit: 10 }));
-    dispatch(setPagination({ page: 0, limit: 10 }));
-    dispatch(setFilters({ ...filters, category }));
-  };
-
-  const handlePriceRange = (priceRange) => {
-    dispatch(fetchProducts({ page: 0, limit: 10 }));
-    dispatch(setPagination({ page: 0, limit: 10 }));
-    dispatch(setFilters({ ...filters, priceRange }));
-  };
+  const handleBrandChange = (brand) => updateFilter({ brand });
+  const handleRatingChange = (rating) => updateFilter({ rating });
+  const handleCategoryChange = (category) => updateFilter({ category });
+  const handlePriceRange = (priceRange) => updateFilter({ priceRange });
 
   const resetFiltersHandler = () => {
     dispatch(fetchProducts({ page: 0, limit: 10 }));
@@ -55,8 +44,18 @@ const Filters = ({ filters }) => {
     dispatch(setFilters({ ...filters, sort: `${field}_${order}` }));
   };
 
-  return (
-    <div>
+  const [isFiltersVisible, setFiltersVisible] = useState(false);
+
+  const toggleFilters = () => {
+    setFiltersVisible((prev) => !prev);
+  };
+
+  const closeFilters = () => {
+    setFiltersVisible(false);
+  };
+
+  const flt = () => (
+    <>
       <div className="filters-wrapper">
         <FilterByRating onRatingChange={handleRatingChange} />
         <FilterByBrand onBrandChange={handleBrandChange} />
@@ -65,9 +64,31 @@ const Filters = ({ filters }) => {
       </div>
       <SortDropdown onSortChange={sortHandler} />
       <button className="reset-button" onClick={resetFiltersHandler}>
-        <span>Reset filters</span>
+        <span>{t("reset_filters")}</span>
         <ResetIcon className="reset-button-icon" size={24} />
       </button>
+    </>
+  );
+
+  return (
+    <div>
+      <div className="desktop-filters">{flt()}</div>
+
+      <div className="mobile-filters-wrapper">
+        <div className="filters-icon-wrapper">
+          <FiltersIcon className="filters-icon" onClick={toggleFilters} />
+        </div>
+
+        <div className={`mobile-filters ${isFiltersVisible ? "active" : ""}`}>
+          <div className="close-filters-btn_wrapper">
+            <button className="close-filters-btn" onClick={closeFilters}>
+              Close Filters
+              <CloseIcon />
+            </button>
+          </div>
+          <div className="filters-content">{flt()}</div>
+        </div>
+      </div>
     </div>
   );
 };

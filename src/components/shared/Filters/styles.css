@@ -33,3 +33,71 @@
 .reset-button:hover .reset-button-icon {
   fill: var(--primary-color); /* change icon color on button hover */
 }
+
+.mobile-filters-wrapper {
+  display: none;
+}
+
+.desktop-filters {
+  display: block;
+}
+
+@media screen and (max-width: 800px) {
+  .desktop-filters {
+    display: none;
+    transition: right 0.3s ease;
+  }
+
+  .filters-icon-wrapper {
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 20px;
+  }
+  .mobile-filters-wrapper {
+    display: block;
+  }
+  .mobile-filters {
+    background-color: var(--white);
+    height: 100vh;
+    width: 100%;
+    max-width: 450px;
+    position: fixed;
+    top: 0;
+    right: -100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 3rem;
+    transition: 0.7s ease;
+    z-index: 100;
+  }
+  .mobile-filters.active {
+    right: 0;
+  }
+  .filters-content {
+    display: flex;
+    flex-direction: column;
+  }
+  .filters-content .filters-wrapper {
+    flex-direction: column;
+  }
+  .close-filters-btn_wrapper {
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+  }
+  .reset-button {
+    font-size: 19px;
+  }
+
+  .close-filters-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--white);
+    border: none;
+  }
+}

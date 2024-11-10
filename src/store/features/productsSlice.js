@@ -9,8 +9,8 @@ const initialState = {
   status: "idle",
   isLoading: false,
   error: null,
-  page: savedPagination.page,
-  limit: savedPagination.limit,
+  page: savedPagination.page || 0,
+  limit: savedPagination.limit || 10,
   total: 0,
   filters: {
     search: savedFilters.search || "",
@@ -39,7 +39,6 @@ export const fetchProducts = createAsyncThunk(
       if (filters.search) {
         filteredProducts = searchByString(filteredProducts, filters.search);
       }
-      // ------
 
       if (filters.rating) {
         filteredProducts = filteredProducts.filter(
@@ -67,12 +66,8 @@ export const fetchProducts = createAsyncThunk(
         );
       }
 
-      localStorage.setItem(
-        "pagination",
-        JSON.stringify({ page: 0, limit: 10 })
-      );
+      localStorage.setItem("pagination", JSON.stringify({ page, limit }));
       localStorage.setItem("filters", JSON.stringify(filters));
-      // --------
 
       let paginatedProducts = getPaginatedProducts(
         filteredProducts,
