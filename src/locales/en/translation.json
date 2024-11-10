@@ -6,5 +6,17 @@
     "footer": "Footer",
     "loading_products": "Loading Products",
     "error_get_products": "Error loading products",
-    "search": "Search"
+    "search": "Search",
+    "no_products_found": "No products found",
+    "sort_products": "Sort Products",
+    "price_asc": "Price Ascending",
+    "price_desc": "Price Descending",
+    "rating_asc": "Rating Ascending",
+    "rating_desc": "Rating Descending",
+    "popularity_asc": "Popularity Ascending",
+    "popularity_desc": "Popularity Descending",
+    "filter_by_rating": "Filter by Rating",
+    "filter_by_brand": "Filter by Brand",
+    "filter_by_category": "Filter by Category",
+    "filter_by_price": "Filter by Price"
 }

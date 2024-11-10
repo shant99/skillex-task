@@ -14,6 +14,17 @@
   min-height: 80vh;
 }
 
+.no-products-found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+  gap: 10px;
+  color: var(--primary-color);
+  font-size: var(--font-size-secondary);
+  margin: 15px 0;
+}
+
 @media (min-width: 600px) {
   .product-list {
     grid-template-columns: repeat(2, 1fr);

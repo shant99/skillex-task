@@ -1,0 +1,35 @@
+.filters-wrapper {
+  display: flex;
+  gap: 10px;
+  margin: 15px 0;
+}
+
+.reset-button {
+  margin-top: 15px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: var(--font-size);
+}
+
+.reset-button:focus {
+  outline: none;
+}
+
+.reset-button {
+  display: flex;
+  align-items: center;
+  color: inherit; /* inherit the color */
+}
+
+.reset-button:hover {
+  color: var(--primary-color); /* changes text and icon color on button hover */
+}
+
+.reset-button:hover .reset-button-icon {
+  fill: var(--primary-color); /* change icon color on button hover */
+}

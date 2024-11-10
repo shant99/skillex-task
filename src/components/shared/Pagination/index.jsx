@@ -27,6 +27,8 @@ const Pagination = ({
     onPageChange(1, newItemsPerPage);
   };
 
+  if (!totalItems) return null;
+
   return (
     <div className="pagination-container">
       <button

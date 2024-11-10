@@ -13,15 +13,12 @@ import {
 const Search = ({ placeholder = "Search", defaultSearch }) => {
   const dispatch = useDispatch();
   const [searchQuery, setSearchQuery] = useState(defaultSearch);
-  const debouncedSearchQuery = useDebounce(searchQuery, 600);
+  const debouncedSearchQuery = useDebounce(searchQuery, 700);
 
   useEffect(() => {
     dispatch(fetchProducts({ page: 0, limit: 10 }));
     dispatch(setPagination({ page: 0, limit: 10 }));
-    dispatch(setFilters({ search: searchQuery }));
-
-    localStorage.setItem("pagination", JSON.stringify({ page: 0, limit: 10 }));
-    localStorage.setItem("filters", JSON.stringify({ search: searchQuery }));
+    dispatch(setFilters({ search: debouncedSearchQuery }));
   }, [debouncedSearchQuery]);
 
   return (

@@ -1,0 +1,65 @@
+.sort-dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.sort-button {
+  padding: 8px 16px;
+  border: 1px solid #ccc;
+  background-color: white;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.arrow {
+  font-size: 12px;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  border: 1px solid var(--color-split);
+  background-color: var(--white);
+  min-width: 150px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+}
+
+.dropdown-menu div {
+  padding: 8px 16px;
+  cursor: pointer;
+}
+
+.dropdown-menu div:hover {
+  background-color: var(--color-split);
+}
+.sort-dropdown {
+  display: inline-block;
+}
+
+.sort-select {
+  padding: 8px;
+  font-size: 16px;
+}
+
+.sort-dropdown .sort-select {
+  appearance: none; /* Removes default dropdown styling */
+  border: 1px solid #ccc; /* Your custom border color */
+  border-radius: 4px; /* Optional: Add rounded corners */
+  padding: 8px;
+  background-color: var(--white);
+  cursor: pointer;
+}
+
+.sort-dropdown .sort-select:focus {
+  outline: none; /* Removes the default black outline */
+  border: 1px solid var(--grey-1); /* Optional: Add a custom border color when focused */
+}
+
+.sort-dropdown .sort-select option {
+  color: var(--grey-1); /* Option text color */
+}
