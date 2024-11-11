@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { Provider } from "react-redux";
-import { configureStore } from "@reduxjs/toolkit"; // Import configureStore from @reduxjs/toolkit
+import { configureStore } from "@reduxjs/toolkit";
 import { ProductsSection } from "../components/shared";
 
 jest.mock("react-i18next", () => ({

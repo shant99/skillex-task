@@ -1,4 +1,4 @@
-import searchByString from "../utils/searchByString"; // Adjust path accordingly
+import searchByString from "../utils/searchByString";
 
 describe("searchByString", () => {
   const products = [
