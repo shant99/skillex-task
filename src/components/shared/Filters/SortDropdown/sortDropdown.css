@@ -6,7 +6,7 @@
 .sort-button {
   padding: 8px 16px;
   border: 1px solid #ccc;
-  background-color: white;
+  background-color: var(--white);
   font-size: 16px;
   cursor: pointer;
   display: flex;
@@ -47,19 +47,19 @@
 }
 
 .sort-dropdown .sort-select {
-  appearance: none; /* Removes default dropdown styling */
-  border: 1px solid #ccc; /* Your custom border color */
-  border-radius: 4px; /* Optional: Add rounded corners */
+  appearance: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   padding: 8px;
   background-color: var(--white);
   cursor: pointer;
 }
 
 .sort-dropdown .sort-select:focus {
-  outline: none; /* Removes the default black outline */
-  border: 1px solid var(--grey-1); /* Optional: Add a custom border color when focused */
+  outline: none;
+  border: 1px solid var(--grey-1);
 }
 
 .sort-dropdown .sort-select option {
-  color: var(--grey-1); /* Option text color */
+  color: var(--grey-1);
 }

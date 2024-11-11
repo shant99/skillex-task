@@ -1,31 +1,22 @@
-/* RatingFilter.css */
-
-/* Container for the rating filter */
 .rating-filter {
   display: inline-block;
   position: relative;
-  font-family: Arial, sans-serif;
 }
-
-/* Label styling */
 .rating-filter label {
   font-size: 16px;
   font-weight: bold;
-  color: #333;
+  color: var(--grey-1);
   margin-right: 8px;
 }
-
-/* Dropdown container */
 .rating-filter .rating-dropdown {
   display: inline-block;
   position: relative;
 }
 
-/* Custom select dropdown styling */
 .rating-filter .rating-select {
-  appearance: none; /* Removes default dropdown styling */
-  border: 1px solid #ccc; /* Border color */
-  border-radius: 4px; /* Rounded corners */
+  appearance: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   padding: 8px;
   font-size: 16px;
   background-color: var(--white);
@@ -33,18 +24,13 @@
   width: 100%;
 }
 
-/* Focus state for select element */
 .rating-filter .rating-select:focus {
-  outline: none; /* Removes the default outline */
-  border: 1px solid var(--grey-1); /* Custom border color */
+  outline: none;
+  border: 1px solid var(--grey-1);
 }
-
-/* Option text styling */
 .rating-filter .rating-select option {
-  color: var(--grey-1); /* Option text color */
+  color: var(--grey-1);
 }
-
-/* Dropdown menu (for custom dropdown if needed) */
 .rating-filter .dropdown-menu {
   position: absolute;
   top: 100%;
@@ -56,12 +42,11 @@
   z-index: 1;
 }
 
-/* Hover effect on options */
 .rating-filter .dropdown-menu div:hover {
   background-color: var(--color-split);
 }
 
 .rating-filter .rating-select option[disabled] {
-  color: #888; /* Light gray color for placeholder */
-  font-style: italic; /* Optional: Makes placeholder text italic */
+  color: #888;
+  font-style: italic;
 }

@@ -1,21 +1,19 @@
 import React, { useEffect, useState } from "react";
 import "./styles.css";
-import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
+const brandOptions = [
+  { value: "", label: "All Brands" },
+  { value: "Brand A", label: "Brand A" },
+  { value: "Brand B", label: "Brand B" },
+  { value: "Brand C", label: "Brand C" },
+  { value: "Brand D", label: "Brand D" },
+  { value: "Brand E", label: "Brand E" },
+];
+
 const FilterByBrand = ({ onBrandChange }) => {
-  const { t } = useTranslation();
   const { filters } = useSelector((state) => state.products);
   const [selectedBrand, setSelectedBrand] = useState(filters.brand);
-
-  const brandOptions = [
-    { value: "", label: t("filter_by_brand"), disabled: true },
-    { value: "Brand A", label: "Brand A" },
-    { value: "Brand B", label: "Brand B" },
-    { value: "Brand C", label: "Brand C" },
-    { value: "Brand D", label: "Brand D" },
-    { value: "Brand E", label: "Brand E" },
-  ];
 
   const handleChange = (e) => {
     const selectedBrand = e.target.value;
@@ -24,10 +22,10 @@ const FilterByBrand = ({ onBrandChange }) => {
   };
 
   useEffect(() => {
-    if (!filters.rating) {
+    if (!filters.brand) {
       setSelectedBrand("");
     }
-  }, [filters.rating]);
+  }, [filters.brand]);
 
   return (
     <div className="brand-filter">
@@ -40,7 +38,7 @@ const FilterByBrand = ({ onBrandChange }) => {
         >
           {brandOptions.map((option) => (
             <option
-              key={option.value}
+              key={option.label}
               value={option.value}
               disabled={option.disabled}
             >

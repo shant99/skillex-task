@@ -1,26 +1,34 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { SearchIcon } from "../../icons";
 import "./styles.css";
-import useDebounce from "../../../hooks/useDebounce";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  fetchProducts,
   setFilters,
   setPagination,
 } from "../../../store/features/productsSlice";
+import { fetchProducts } from "../../../store/thunks/fetchProducts";
+import { debounce } from "../../../utils/debounce";
 
-const Search = ({ placeholder = "Search", defaultSearch }) => {
+const Search = ({ placeholder = "Search" }) => {
   const dispatch = useDispatch();
   const { filters } = useSelector((state) => state.products);
-  const [searchQuery, setSearchQuery] = useState(defaultSearch);
-  const debouncedSearchQuery = useDebounce(searchQuery, 700);
+  const [searchQuery, setSearchQuery] = useState(filters.search || "");
 
-  useEffect(() => {
-    dispatch(fetchProducts({ page: 0, limit: 10 }));
-    dispatch(setPagination({ page: 0, limit: 10 }));
-    dispatch(setFilters({ search: debouncedSearchQuery }));
-  }, [debouncedSearchQuery]);
+  const debouncedSearch = useCallback(
+    debounce((value) => {
+      dispatch(setFilters({ search: value }));
+      dispatch(fetchProducts({ page: 0, limit: 10 }));
+      dispatch(setPagination({ page: 0, limit: 10 }));
+    }, 700),
+    [dispatch]
+  );
+
+  const onSearchChange = (e) => {
+    const value = e.target.value;
+    setSearchQuery(value);
+    debouncedSearch(value);
+  };
 
   useEffect(() => {
     if (!filters.search) {
@@ -37,7 +45,7 @@ const Search = ({ placeholder = "Search", defaultSearch }) => {
           className="search-input"
           placeholder={placeholder}
           value={searchQuery}
-          onChange={(e) => setSearchQuery(e.target.value)}
+          onChange={onSearchChange}
         />
       </div>
     </div>

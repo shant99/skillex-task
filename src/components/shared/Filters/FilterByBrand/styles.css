@@ -1,13 +1,9 @@
-/* FilterByBrand.css */
-
-/* Container for the brand filter */
 .brand-filter {
   display: inline-block;
   position: relative;
   font-family: Arial, sans-serif;
 }
 
-/* Label styling */
 .brand-filter label {
   font-size: 16px;
   font-weight: bold;
@@ -15,17 +11,14 @@
   margin-right: 8px;
 }
 
-/* Dropdown container */
 .brand-filter .brand-dropdown {
   display: inline-block;
   position: relative;
 }
-
-/* Custom select dropdown styling */
 .brand-filter .brand-select {
-  appearance: none; /* Removes default dropdown styling */
-  border: 1px solid #ccc; /* Border color */
-  border-radius: 4px; /* Rounded corners */
+  appearance: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   padding: 8px;
   font-size: 16px;
   background-color: var(--white);
@@ -33,24 +26,20 @@
   width: 100%;
 }
 
-/* Focus state for select element */
 .brand-filter .brand-select:focus {
-  outline: none; /* Removes the default outline */
-  border: 1px solid var(--grey-1); /* Custom border color */
+  outline: none;
+  border: 1px solid var(--grey-1);
 }
 
-/* Option text styling */
 .brand-filter .brand-select option {
-  color: var(--grey-1); /* Option text color */
+  color: var(--grey-1);
 }
 
-/* Disabled option styling (for placeholder) */
 .brand-filter .brand-select option[disabled] {
-  color: #888; /* Light gray color for placeholder */
-  font-style: italic; /* Makes placeholder text italic */
+  color: #888;
+  font-style: italic;
 }
 
-/* Dropdown menu (for custom dropdown if needed) */
 .brand-filter .dropdown-menu {
   position: absolute;
   top: 100%;
@@ -62,7 +51,6 @@
   z-index: 1;
 }
 
-/* Hover effect on options */
 .brand-filter .dropdown-menu div:hover {
   background-color: var(--color-split);
 }

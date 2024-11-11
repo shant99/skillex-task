@@ -2,10 +2,8 @@ import { useMemo, useState } from "react";
 import "./styles.css";
 import generatePageNumbers from "../../../utils/generatePageNumbers";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  fetchProducts,
-  setPagination,
-} from "../../../store/features/productsSlice";
+import { setPagination } from "../../../store/features/productsSlice";
+import { fetchProducts } from "../../../store/thunks/fetchProducts";
 
 const Pagination = () => {
   const dispatch = useDispatch();

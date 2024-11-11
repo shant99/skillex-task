@@ -16,9 +16,9 @@
   position: relative;
 }
 .category-filter .category-select {
-  appearance: none; /* Removes default dropdown styling */
-  border: 1px solid #ccc; /* Border color */
-  border-radius: 4px; /* Rounded corners */
+  appearance: none;
+  border: 1px solid #ccc;
+  border-radius: 4px;
   padding: 8px;
   font-size: 16px;
   background-color: var(--white);
@@ -26,17 +26,16 @@
   width: 100%;
 }
 .category-filter .category-select:focus {
-  outline: none; /* Removes the default outline */
-  border: 1px solid var(--grey-1); /* Custom border color */
+  outline: none;
+  border: 1px solid var(--grey-1);
 }
 
-/* Option text styling */
 .category-filter .category-select option {
-  color: var(--grey-1); /* Option text color */
+  color: var(--grey-1);
 }
 .category-filter .category-select option[disabled] {
-  color: #888; /* Light gray color for placeholder */
-  font-style: italic; /* Makes placeholder text italic */
+  color: #888;
+  font-style: italic;
 }
 .category-filter .dropdown-menu {
   position: absolute;
@@ -49,7 +48,6 @@
   z-index: 1;
 }
 
-/* Hover effect on options */
 .category-filter .dropdown-menu div:hover {
   background-color: var(--color-split);
 }

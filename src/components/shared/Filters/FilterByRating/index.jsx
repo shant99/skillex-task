@@ -1,15 +1,13 @@
 import React, { useEffect, useState } from "react";
 import "./styles.css";
-import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 
 const RatingFilter = ({ onRatingChange }) => {
-  const { t } = useTranslation();
   const { filters } = useSelector((state) => state.products);
   const [minRating, setMinRating] = useState(filters.rating);
 
   const ratingOptions = [
-    { value: 0, label: t("filter_by_rating"), disabled: true },
+    { value: 0, label: "All Ratings" },
     { value: 1, label: "1 Star & Up" },
     { value: 2, label: "2 Stars & Up" },
     { value: 3, label: "3 Stars & Up" },

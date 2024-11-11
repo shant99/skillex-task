@@ -23,15 +23,15 @@
 .reset-button {
   display: flex;
   align-items: center;
-  color: inherit; /* inherit the color */
+  color: inherit;
 }
 
 .reset-button:hover {
-  color: var(--primary-color); /* changes text and icon color on button hover */
+  color: var(--primary-color);
 }
 
 .reset-button:hover .reset-button-icon {
-  fill: var(--primary-color); /* change icon color on button hover */
+  fill: var(--primary-color);
 }
 
 .mobile-filters-wrapper {

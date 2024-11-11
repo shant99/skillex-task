@@ -1,18 +1,18 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from "react";
-import Slider from "rc-slider"; // Import rc-slider
-import "rc-slider/assets/index.css"; // Import the CSS for rc-slider
+import React, { useCallback, useEffect, useState } from "react";
+import Slider from "rc-slider";
+import "rc-slider/assets/index.css";
 import { useTranslation } from "react-i18next";
 import { useDispatch, useSelector } from "react-redux";
 import "./styles.css";
-import useDebounce from "../../../../hooks/useDebounce";
 import {
-  fetchProducts,
   setFilters,
   setPagination,
 } from "../../../../store/features/productsSlice";
+import { fetchProducts } from "../../../../store/thunks/fetchProducts";
+import { debounce } from "../../../../utils/debounce";
 
-const FilterByPriceRange = ({ onPriceRangeChange }) => {
+const FilterByPriceRange = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { filters } = useSelector((state) => state.products);
@@ -22,31 +22,28 @@ const FilterByPriceRange = ({ onPriceRangeChange }) => {
     filters?.priceRange?.[1] || 1000,
   ]);
 
-  const debouncedRange = useDebounce(range, 1500);
-
-  useEffect(() => {
-    dispatch(fetchProducts({ page: 0, limit: 10 }));
-    dispatch(setPagination({ page: 0, limit: 10 }));
-    dispatch(setFilters({ ...filters, priceRange: debouncedRange }));
-  }, [debouncedRange]);
+  const debouncedPriceRange = useCallback(
+    debounce((value) => {
+      dispatch(setFilters({ priceRange: value }));
+      dispatch(fetchProducts({ page: 0, limit: 10 }));
+      dispatch(setPagination({ page: 0, limit: 10 }));
+    }, 700),
+    [dispatch]
+  );
 
   const handleSliderChange = (value) => {
     setRange(value);
-    if (onPriceRangeChange) {
-      onPriceRangeChange({ minPrice: value[0], maxPrice: value[1] });
-    }
+    debouncedPriceRange(value);
   };
 
   const handleToggleSlider = () => {
     setShowSlider(!showSlider);
   };
-
   useEffect(() => {
     if (!filters.priceRange) {
-      setRange([filters.minPrice || 0, filters.maxPrice || 1000]);
+      setRange([0, 1000]);
     }
-  }, [filters.maxPrice, filters.minPrice, filters.priceRange]);
-
+  }, [filters.priceRange]);
   return (
     <div className="price-range-filter">
       <div className="price-dropdown">

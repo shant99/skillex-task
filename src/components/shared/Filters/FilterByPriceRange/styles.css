@@ -16,15 +16,15 @@
 }
 
 .price-dropdown-btn:hover {
-  background-color: #e9e9e9; /* Темнее при наведении */
+  background-color: #e9e9e9;
 }
 
 .price-range-filter .slider-container {
   position: absolute;
-  top: 100%; /* Position the slider below the button */
+  top: 100%;
   left: 0;
-  width: 100%; /* Make it as wide as the button */
-  z-index: 10; /* Ensure it overlays on top of other elements */
+  width: 100%;
+  z-index: 10;
   background-color: #fff;
   padding: 10px;
   border-radius: 4px;

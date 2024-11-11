@@ -6,13 +6,13 @@
 .search-input-container {
   display: flex;
   align-items: center;
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid var(--color-text);
   padding-bottom: 5px;
   width: 500px;
 }
 
 .search-icon {
-  color: #333;
+  color: var(--grey-1);
   margin-right: 8px;
 }
 
@@ -27,7 +27,7 @@
 }
 
 .search-input::placeholder {
-  color: #aaa;
+  color: var(--grey-1);
 }
 
 @media screen and (max-width: 600px) {

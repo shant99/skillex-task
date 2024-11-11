@@ -19,5 +19,13 @@
     "filter_by_brand": "Filter by Brand",
     "filter_by_category": "Filter by Category",
     "filter_by_price": "Filter by Price",
-    "reset_filters": "Reset filters"
+    "reset_filters": "Reset filters",
+    "skillex": "Skillex",
+    "name_surname": "Shant Hakobyan",
+    "task": "Task",
+    "task_title": "Build a Dynamic Filtering System for a Product Catalog (React.js withoutTypeScript)",
+    "brand": "Brand",
+    "category": "Category",
+    "rating": "Rating",
+    "page_loading": "Page Loading"
 }

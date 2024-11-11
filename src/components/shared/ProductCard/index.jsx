@@ -1,7 +1,10 @@
 import React from "react";
 import "./styles.css";
+import { useTranslation } from "react-i18next";
 
 const ProductCard = ({ product }) => {
+  const { t } = useTranslation();
+
   return (
     <div className="product-card">
       <>
@@ -13,15 +16,15 @@ const ProductCard = ({ product }) => {
         <div className="product-info">
           <h2 className="product-name">{product.name}</h2>
           <p className="product-category">
-            <span>Category:</span> {product.category}
+            <span>{t("category")}:</span> {product.category}
           </p>
           <p className="product-brand">
-            <span>Brand:</span> {product.brand}
+            <span>{t("brand")}:</span> {product.brand}
           </p>
           <div className="rating-price-wrapper">
             <p className="product-price">${product.price.toFixed(2)}</p>
             <p className="product-rating">
-              <span>Rating:</span> <span>{product.rating}</span>
+              <span>{t("brand")}:</span> <span>{product.rating}</span>
               <span>★</span>{" "}
             </p>
           </div>
