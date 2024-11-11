@@ -24,13 +24,13 @@ const ProductCard = ({ product }) => {
           <div className="rating-price-wrapper">
             <p className="product-price">${product.price.toFixed(2)}</p>
             <p className="product-rating">
-              <span>{t("brand")}:</span> <span>{product.rating}</span>
+              <span>{t("rating")}:</span> <span>{product.rating}</span>
               <span>★</span>{" "}
             </p>
           </div>
         </div>
       </>
-      <button className="add-to-cart">Add to Cart</button>
+      <button className="add-to-cart">{t("add_to_card")}</button>
     </div>
   );
 };

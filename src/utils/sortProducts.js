@@ -10,18 +10,18 @@ export const sortData = (products, sortOption) => {
 
   switch (sortOption) {
     case "price_asc":
-      return data.sort((a, b) => a.price - b.price);
+      return [...data].sort((a, b) => a.price - b.price);
     case "price_desc":
-      return data.sort((a, b) => b.price - a.price);
+      return [...data].sort((a, b) => b.price - a.price);
     case "rating_asc":
-      return data.sort((a, b) => a.rating - b.rating);
+      return [...data].sort((a, b) => a.rating - b.rating);
     case "rating_desc":
-      return data.sort((a, b) => b.rating - a.rating);
+      return [...data].sort((a, b) => b.rating - a.rating);
     case "popularity_asc":
-      return data.sort((a, b) => a.popularity - b.popularity);
+      return [...data].sort((a, b) => a.popularity - b.popularity);
     case "popularity_desc":
-      return data.sort((a, b) => b.popularity - a.popularity);
+      return [...data].sort((a, b) => b.popularity - a.popularity);
     default:
-      return data;
+      return products;
   }
 };

@@ -27,5 +27,6 @@
     "brand": "Brand",
     "category": "Category",
     "rating": "Rating",
-    "page_loading": "Page Loading"
+    "page_loading": "Page Loading",
+    "add_to_card": "Add to Card"
 }

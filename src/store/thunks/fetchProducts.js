@@ -2,6 +2,12 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import { getPaginatedProducts } from "../../utils/pagination";
 import searchByString from "../../utils/searchByString";
 import { sortData } from "../../utils/sortProducts";
+import {
+  getProductsByBrand,
+  getProductsByCategory,
+  getProductsByPriceRange,
+  getProductsByRating,
+} from "../../utils/filtersProducts";
 
 export const fetchProducts = createAsyncThunk(
   "products/fetchProducts",
@@ -23,29 +29,19 @@ export const fetchProducts = createAsyncThunk(
       }
 
       if (filters.rating) {
-        filteredProducts = filteredProducts.filter(
-          (product) => product.rating >= filters.rating
-        );
+        filteredProducts = getProductsByRating(filteredProducts, filters);
       }
 
       if (filters.brand) {
-        filteredProducts = filteredProducts.filter(
-          (product) => product.brand === filters.brand
-        );
+        filteredProducts = getProductsByBrand(filteredProducts, filters);
       }
 
       if (filters.category) {
-        filteredProducts = filteredProducts.filter(
-          (product) => product.category === filters.category
-        );
+        filteredProducts = getProductsByCategory(filteredProducts, filters);
       }
 
       if (filters.priceRange) {
-        filteredProducts = filteredProducts.filter(
-          (product) =>
-            product.price >= filters.priceRange[0] &&
-            product.price <= filters.priceRange[1]
-        );
+        filteredProducts = getProductsByPriceRange(filteredProducts, filters);
       }
 
       localStorage.setItem("pagination", JSON.stringify({ page, limit }));

@@ -1,5 +1,5 @@
 function searchByString(products, searchString) {
-  const lowercasedSearch = searchString.toLowerCase();
+  const lowercasedSearch = searchString.trim().toLowerCase();
 
   return products.filter(
     (product) =>

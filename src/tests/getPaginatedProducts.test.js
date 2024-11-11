@@ -1,6 +1,11 @@
 import generateProducts from "../utils/generateProducts";
 import { getPaginatedProducts } from "../utils/pagination";
 
+jest.spyOn(console, "error").mockImplementation((msg) => {
+  if (msg.includes("ReactDOMTestUtils.act")) return;
+  console.error(msg);
+});
+
 describe("Pagination function tests", () => {
   const filteredProducts = generateProducts(5);
 

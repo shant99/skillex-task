@@ -1,6 +1,17 @@
 import { render, screen } from "@testing-library/react";
 import ProductCard from "../components/shared/ProductCard";
 
+jest.spyOn(console, "error").mockImplementation((msg) => {
+  if (msg.includes("ReactDOMTestUtils.act")) return;
+  console.error(msg);
+});
+
+jest.mock("react-i18next", () => ({
+  useTranslation: () => ({
+    t: (key) => key,
+  }),
+}));
+
 describe("ProductCard Component", () => {
   const mockProduct = {
     name: "Wireless Headphones",
@@ -20,26 +31,20 @@ describe("ProductCard Component", () => {
     const name = screen.getByText(mockProduct.name);
     expect(name).toBeInTheDocument();
 
-    const category = screen.getByText(`Category: ${mockProduct.category}`);
-    expect(category).toBeInTheDocument();
+    expect(screen.getByText(`category:`)).toBeInTheDocument();
+    expect(screen.getByText(mockProduct.category)).toBeInTheDocument();
 
-    const brand = screen.getByText(`Brand: ${mockProduct.brand}`);
-    expect(brand).toBeInTheDocument();
+    expect(screen.getByText(`brand:`)).toBeInTheDocument();
+    expect(screen.getByText(mockProduct.brand)).toBeInTheDocument();
 
-    const price = screen.getByText(`$${mockProduct.price.toFixed(2)}`);
-    expect(price).toBeInTheDocument();
+    expect(
+      screen.getByText(`$${mockProduct.price.toFixed(2)}`)
+    ).toBeInTheDocument();
 
-    const rating = screen.getByText(`Rating: ${mockProduct.rating} ★`);
-    expect(rating).toBeInTheDocument();
+    expect(screen.getByText(`rating:`)).toBeInTheDocument();
+    expect(screen.getByText(mockProduct.rating.toString())).toBeInTheDocument();
 
-    const addToCartButton = screen.getByText(/Add to Cart/i);
+    const addToCartButton = screen.getByText("add_to_card");
     expect(addToCartButton).toBeInTheDocument();
-  });
-
-  it("displays the correct product price format", () => {
-    render(<ProductCard product={mockProduct} />);
-
-    const price = screen.getByText(`$${mockProduct.price.toFixed(2)}`);
-    expect(price).toHaveTextContent(`$199.99`);
   });
 });
