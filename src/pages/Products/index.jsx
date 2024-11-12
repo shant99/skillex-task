@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect } from "react";
+import React, { useEffect, useTransition } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Filters,
@@ -15,16 +15,19 @@ const Products = () => {
   const { t } = useTranslation();
   const dispatch = useDispatch();
   const { page, limit, isLoading } = useSelector((state) => state.products);
+  const [isPending, startTransition] = useTransition();
 
   useEffect(() => {
-    dispatch(fetchProducts({ page, limit }));
+    startTransition(() => {
+      dispatch(fetchProducts({ page, limit }));
+    });
   }, []);
 
   return (
     <>
       <Search />
       <Filters />
-      {isLoading ? (
+      {isPending || isLoading ? (
         <Loading text={t("loading_products")} />
       ) : (
         <>
